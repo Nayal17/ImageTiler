@@ -59,8 +59,8 @@ class ImageTilingFactory:
         category_polygon_tuples = []
         for item in self.polygons:
             if item['segmentation']:
-                x_coordinates = item['segmentation'][0][0::2]
-                y_coordinates = item['segmentation'][0][1::2]
+                x_coordinates = item['segmentation'][0::2]
+                y_coordinates = item['segmentation'][1::2]
                 category_polygon_tuples.append(
                     (item['category_id'], list(map(lambda x, y: (x, y), x_coordinates, y_coordinates)))
                 )
