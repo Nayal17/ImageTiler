@@ -234,8 +234,8 @@ class ImageTilingFactory:
                 continue
             result = self.segmentation_health_check(result, self.tile_width, self.tile_height)
             # bbox = self.segmentation_to_bbox(result)
-            if not self.bbox_health_check(bbox, self.tile_width, self.tile_height):
-                continue
+            # if not self.bbox_health_check(bbox, self.tile_width, self.tile_height):
+            #     continue
 
             new_annotations.append({
                 # "category_id": category_id,
