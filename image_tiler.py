@@ -62,7 +62,7 @@ class ImageTilingFactory:
                 x_coordinates = item['segmentation'][0::2]
                 y_coordinates = item['segmentation'][1::2]
                 category_polygon_tuples.append(
-                    (item['category_id'], list(map(lambda x, y: (x, y), x_coordinates, y_coordinates)))
+                    (0, list(map(lambda x, y: (x, y), x_coordinates, y_coordinates)))
                 )
             elif not item['segmentation'] and item['bbox']:
                 x_min, y_min = item['bbox'][0], item['bbox'][1]
@@ -233,16 +233,16 @@ class ImageTilingFactory:
             if not result:
                 continue
             result = self.segmentation_health_check(result, self.tile_width, self.tile_height)
-            bbox = self.segmentation_to_bbox(result)
+            # bbox = self.segmentation_to_bbox(result)
             if not self.bbox_health_check(bbox, self.tile_width, self.tile_height):
                 continue
 
             new_annotations.append({
-                "category_id": category_id,
+                # "category_id": category_id,
                 "segmentation": [result],
-                "bbox": bbox,
-                "area": self.segmentation_area(result),
-                "iscrowd": 0
+                # "bbox": bbox,
+                # "area": self.segmentation_area(result),
+                # "iscrowd": 0
             })
 
         self.tiled_images.append({
